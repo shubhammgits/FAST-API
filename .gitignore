@@ -1,2 +1,15 @@
-myenv
-__pycache__
+
+# Virtual environments
+venv/
+myenv/
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Environment variables / secrets
+.env
+
+# VS Code settings (optional)
+.vscode/
