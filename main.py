@@ -38,5 +38,21 @@ def view_patient(patient_id: str = Path(..., description='ID of the patient in t
 
 
 @app.get('/sort')
-def sort_patients(sort_by: str = Path()):
-    
+def sort_patients(sort_by: str = Query(..., description='Sort on the basis of height, weight or bmi'), order: str = Query('asc', description='Sort in ascending or descending order')):
+
+    validFields = ['height', 'weight', 'bmi']
+
+    if sort_by not in validFields:
+        raise HTTPException(status_code=400, detail=f'Invalid Field, Select from {validFields}')
+
+
+    if order not in ['asc', 'desc']:
+        raise HTTPException(status_code=400, detail='Invalid Order, Select between asc and desc')
+
+    data=load_data()
+
+    sortOrder = True if order=='desc' else False
+
+    sortedData = sorted(data.values(), key=lambda x: x.get(sort_by, 0), revrese=sortOrder)
+
+    return sortedData 
