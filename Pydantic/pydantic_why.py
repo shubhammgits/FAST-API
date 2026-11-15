@@ -31,13 +31,3 @@ def insert_patient_data_strictEnforce(name: str, age: int):
         raise TypeError('Incorrect data type')
 
 insert_patient_data_strictEnforce('Shubham', 'Twenty')
-
-
-#but its not SCALABLE
-
-
-
-
-
-
-
