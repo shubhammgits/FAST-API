@@ -42,3 +42,6 @@ def sort_patient(sort_by:str = Query(..., description='Sort on the basis of heig
         return HTTPException(status_code=400, detail='Invalid order, select between asc and desc')
 
     data = load_data()
+
+    sortOrder
+    sortedData = sorted(data.values(), key = lambda x: x.get(sort_by,0), reverse=sortOrder)
